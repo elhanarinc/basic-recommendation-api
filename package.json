@@ -1,0 +1,46 @@
+{
+  "name": "insurance-recommendation",
+  "version": "1.0.0",
+  "description": "Basic insurance recommendation API",
+  "main": "src/server.js",
+  "scripts": {
+    "transpile": "babel ./src --out-dir dist",
+    "clean": "rimraf dist",
+    "build": "npm-run-all clean transpile",
+    "init": "node ./dist/server.js",
+    "start:dev": "NODE_ENV=development npm-run-all build init",
+    "start:prod": "NODE_ENV=production npm-run-all build init",
+    "watch:dev": "nodemon"
+  },
+  "author": "Arinc Elhan <elhanarinc@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.16.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "mongoose": "^6.0.12",
+    "mongoose-validation-error-handler": "^2.1.5",
+    "morgan": "^1.10.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "eslint": "^8.1.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.14",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2"
+  }
+}

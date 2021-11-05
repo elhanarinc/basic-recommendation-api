@@ -1,0 +1,5 @@
+{
+  "exec": "npm run start:dev",
+  "watch": ["src/*"],
+  "ignore": ["**/__tests__/**", "*.test.js", "*.spec.js"]
+}
