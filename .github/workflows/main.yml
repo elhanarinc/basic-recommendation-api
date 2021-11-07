@@ -5,26 +5,28 @@ on:
     branches:
       - master
 
+env:
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  APP_NAME: ${{ 'insurance-api-arinc' }}
+  NODE_ENV: production
+  DB_USERNAME: ${{ secrets.DB_USERNAME }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_CONNECTION_PATH: ${{ secrets.DB_CONNECTION_PATH }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: 'insurance-api-arinc'
-          heroku_email: 'elhanarinc@gmail.com'
-          usedocker: true
-          healthcheck: 'https://insurance-api-arinc.herokuapp.com/healthcheck'
-          dontuseforce: 1
-          docker_build_args: |
-            NODE_ENV
-            DB_USERNAME
-            DB_PASSWORD
-            DB_CONNECTION_PATH
-        env:
-          NODE_ENV: production
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_CONNECTION_PATH: ${{ secrets.DB_CONNECTION_PATH }}
+      # Checkout the repo
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Build Docker image
+      - name: Docker build
+        run: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+
+      # Push the Docker image to Heroku Container Registry
+      - name: Publish
+        run: |
+          heroku container:push web --app $APP_NAME --arg NODE_ENV=$NODE_ENV,DB_USERNAME=$DB_USERNAME,DB_PASSWORD=$DB_PASSWORD,DB_CONNECTION_PATH=$DB_CONNECTION_PATH
+          heroku container:release web --app $APP_NAME
