@@ -3,9 +3,7 @@
 #
 FROM node:14.16.0 AS build
 
-COPY src /home/app/src
-COPY package*.json /home/app
-COPY .babelrc /home/app
+COPY . /home/app/
 
 WORKDIR /home/app
 RUN npm install
