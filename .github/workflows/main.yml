@@ -17,6 +17,7 @@ jobs:
           heroku_email: 'elhanarinc@gmail.com'
           usedocker: true
           healthcheck: 'https://insurance-api-arinc.herokuapp.com/healthcheck'
+          dontuseforce: 1
           docker_build_args: |
             NODE_ENV
             DB_USERNAME
