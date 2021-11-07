@@ -1,4 +1,5 @@
 import updateUserInfoService from '../services/userinfo.service';
+import recommendationEngine from '../engine/recommendationEngine';
 
 const updateUserInfoController = async (req, res, next) => {
   const { firstName, address, children, childrenNumber, occupation, email } =
@@ -14,10 +15,12 @@ const updateUserInfoController = async (req, res, next) => {
       email,
       occupation,
     });
+
+    const recommendation = recommendationEngine(userInfo);
+
     return res.status(200).json({
-      status: 200,
-      data: userInfo,
-      message: 'Succesfully Get Recommendation',
+      status: 'OK',
+      data: recommendation,
     });
   } catch (error) {
     const { field, message } = JSON.parse(error.message);
