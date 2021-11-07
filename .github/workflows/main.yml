@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'recommendation-engine-api'
+          heroku_email: 'elhanarinc@gmail.com'
+          usedocker: true
+          healthcheck: 'https://recommendation-engine-api.herokuapp.com/healthcheck'
+          docker_build_args: |
+            NODE_ENV
+            DB_USERNAME
+            DB_PASSWORD
+            DB_CONNECTION_PATH
+        env:
+          NODE_ENV: production
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_CONNECTION_PATH: ${{ secrets.DB_CONNECTION_PATH }}

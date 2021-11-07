@@ -6,7 +6,7 @@ import logger from './utils/logger';
 
 dotenv.config({ silent: process.env.NODE_ENV === 'production' });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 startDatabase(() => {
   app.listen(port, () => {
