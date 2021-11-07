@@ -13,10 +13,10 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: 'insurance-recommendation-engine-api'
+          heroku_app_name: 'insurance-api-arinc'
           heroku_email: 'elhanarinc@gmail.com'
           usedocker: true
-          healthcheck: 'https://insurance-recommendation-engine-api.herokuapp.com/healthcheck'
+          healthcheck: 'https://insurance-api-arinc.herokuapp.com/healthcheck'
           docker_build_args: |
             NODE_ENV
             DB_USERNAME
