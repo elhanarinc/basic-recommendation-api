@@ -21,12 +21,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Build Docker image
-      - name: Docker build
+      # Login heroku docker image registry
+      - name: Login Heroku Docker Image Registry
         run: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
 
-      # Push the Docker image to Heroku Container Registry
-      - name: Publish
+      - name: Set Env Vars for Heroku
         run: |
-          heroku container:push web --app $APP_NAME --arg NODE_ENV=$NODE_ENV,DB_USERNAME=$DB_USERNAME,DB_PASSWORD=$DB_PASSWORD,DB_CONNECTION_PATH=$DB_CONNECTION_PATH
-          heroku container:release web --app $APP_NAME
+          heroku config:set NODE_ENV=$NODE_ENV --app $APP_NAME
+          heroku config:set DB_USERNAME=$DB_USERNAME --app $APP_NAME
+          heroku config:set DB_PASSWORD=$DB_PASSWORD --app $APP_NAME
+          heroku config:set DB_CONNECTION_PATH=$DB_CONNECTION_PATH --app $APP_NAME
+
+      # Push the Docker image to Heroku Container Registry
+      - name: Push to Heroku
+        run: heroku container:push web --app $APP_NAME
+
+      # Release the Docker image to live
+      - name: Release the image from Heroku Registry
+        run: heroku container:release web --app $APP_NAME
