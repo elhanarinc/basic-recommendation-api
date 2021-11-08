@@ -10,10 +10,25 @@
     "init": "node ./dist/server.js",
     "start:dev": "NODE_ENV=development npm-run-all build init",
     "start:prod": "NODE_ENV=production npm-run-all build init",
-    "watch:dev": "nodemon"
+    "watch:dev": "nodemon",
+    "test": "jest --forceExit"
   },
   "author": "Arinc Elhan <elhanarinc@gmail.com>",
   "license": "ISC",
+  "jest": {
+    "rootDir": "src",
+    "testEnvironment": "node",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "testTimeout": 30000
+  },
   "dependencies": {
     "@babel/runtime": "^7.16.0",
     "body-parser": "^1.19.0",
@@ -38,9 +53,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
     "nodemon": "^2.0.14",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "supertest": "^6.1.6"
   }
 }
