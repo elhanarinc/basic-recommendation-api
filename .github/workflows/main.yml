@@ -28,16 +28,12 @@ jobs:
           node-version: '14.16.0'
 
       # Install npm dependecies
-      - name: Install npm dependencies
-        run: npm ci
-
-      # Install Jest
-      - name: Install jest
-        run: npm install -g eslint
+      - name: Install dependencies
+        run: yarn install
 
       # Run tests
       - name: Run Tests
-        run: npm test
+        run: yarn test
         env:
           CI: true
           ISOLATE: true
