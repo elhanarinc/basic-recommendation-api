@@ -31,9 +31,13 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      # Install Jest
+      - name: Install jest
+        run: npm install -g eslint
+
       # Run tests
       - name: Run Tests
-        run: npm test --verbose --maxWorkers=2
+        run: npm test
         env:
           CI: true
           ISOLATE: true
