@@ -23,8 +23,9 @@ const userInfoValidateRequest = () => [
     .isString()
     .toLowerCase()
     .isIn(['yes', 'no'])
-    .withMessage('Children can only be `Yes` or `No`.'),
+    .withMessage('Children can only be `yes` or `no`.'),
   body('childrenNumber')
+    .if(body('children').isIn(['yes']))
     .exists()
     .withMessage('Children Number does not exists.')
     .notEmpty()

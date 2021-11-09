@@ -112,7 +112,7 @@ describe('Start Tests', () => {
         },
         {
           value: 2,
-          msg: 'Children can only be `Yes` or `No`.',
+          msg: 'Children can only be `yes` or `no`.',
           param: 'children',
           location: 'body',
         },

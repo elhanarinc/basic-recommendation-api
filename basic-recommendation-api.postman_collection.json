@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "db78e7ce-acfb-49a2-ba29-f4ebb57a2493",
+    "name": "basic recommendation api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "invalid patch request",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "https://insurance-api-arinc.herokuapp.com/recommendations",
+          "protocol": "https",
+          "host": ["insurance-api-arinc", "herokuapp", "com"],
+          "path": ["recommendations"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "invalid put request",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "https://insurance-api-arinc.herokuapp.com/recommendations",
+          "protocol": "https",
+          "host": ["insurance-api-arinc", "herokuapp", "com"],
+          "path": ["recommendations"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "healthcheck",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://insurance-api-arinc.herokuapp.com/healthcheck",
+          "protocol": "https",
+          "host": ["insurance-api-arinc", "herokuapp", "com"],
+          "path": ["healthcheck"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Valid Post Request 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Test Test\",\n    \"address\": \"Berlin\",\n    \"children\": \"yes\",\n    \"childrenNumber\": 3,\n    \"occupation\": \"Self-employed\",\n    \"email\": \"test@gmail.com\"\n}"
+        },
+        "url": {
+          "raw": "https://insurance-api-arinc.herokuapp.com/recommendations",
+          "protocol": "https",
+          "host": ["insurance-api-arinc", "herokuapp", "com"],
+          "path": ["recommendations"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Valid Post Request 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Test Test\",\n    \"address\": \"Berlin\",\n    \"children\": \"no\",\n    \"childrenNumber\": 0,\n    \"occupation\": \"Student\",\n    \"email\": \"test@gmail.com\"\n}"
+        },
+        "url": {
+          "raw": "https://insurance-api-arinc.herokuapp.com/recommendations",
+          "protocol": "https",
+          "host": ["insurance-api-arinc", "herokuapp", "com"],
+          "path": ["recommendations"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid Post Request 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Test Test\",\n    \"address\": \"Berlin\",\n    \"children\": \"yes\",\n    \"childrenNumber\": 3,\n    \"occupation\": \"Self\",\n    \"email\": \"test@gmail.com\"\n}"
+        },
+        "url": {
+          "raw": "https://insurance-api-arinc.herokuapp.com/recommendations",
+          "protocol": "https",
+          "host": ["insurance-api-arinc", "herokuapp", "com"],
+          "path": ["recommendations"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid Post Request 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"Test Test\",\n    \"address\": \"Berlin\",\n    \"children\": 5,\n    \"childrenNumber\": 3,\n    \"occupation\": \"Self\",\n    \"email\": \"test@gmail.com\"\n}"
+        },
+        "url": {
+          "raw": "https://insurance-api-arinc.herokuapp.com/recommendations",
+          "protocol": "https",
+          "host": ["insurance-api-arinc", "herokuapp", "com"],
+          "path": ["recommendations"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
